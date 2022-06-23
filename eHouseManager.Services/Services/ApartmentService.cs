@@ -1,4 +1,5 @@
-﻿using eHouseManager.Data;
+﻿using eHouseManager.Common;
+using eHouseManager.Data;
 using eHouseManager.Data.DatabaseModels;
 using eHouseManager.Services.Contracts;
 using eHouseManager.Services.DTOMappers;
@@ -11,7 +12,7 @@ using System.Text;
 
 namespace eHouseManager.Services.Services
 {
-    public class ApartmentService : IApartment
+    public class ApartmentService : IApartmentService
     {
         private readonly eHouseManagerDbContext _db;
         public ApartmentService(eHouseManagerDbContext db)
@@ -21,7 +22,7 @@ namespace eHouseManager.Services.Services
 
         public ApartmentDTO Delete(int id)
         {
-            var objToDelete = _db.Apartments.FirstOrDefault(x => x.ApartmentID == id) ?? throw new AppException();
+            var objToDelete = _db.Apartments.FirstOrDefault(x => x.ApartmentID == id) ?? throw new AppException(Constants.ENTITY_NOT_FOUND);
             _db.Apartments.Remove(objToDelete);
             _db.SaveChanges();
             return objToDelete.ToDTO();
@@ -34,7 +35,12 @@ namespace eHouseManager.Services.Services
 
         public ApartmentDTO GetById(int id)
         {
-            return _db.Apartments.FirstOrDefault(x => x.ApartmentID == id).ToDTO();
+            return _db.Apartments.FirstOrDefault(x => x.ApartmentID == id)?.ToDTO() ?? throw new AppException(Constants.ENTITY_NOT_FOUND);
+        }
+
+        public int GetCount()
+        {
+            return _db.Apartments.Count();
         }
 
         public ApartmentDTO Post(ApartmentDTO obj)

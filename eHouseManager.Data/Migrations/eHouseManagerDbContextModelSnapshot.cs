@@ -51,6 +51,15 @@ namespace eHouseManager.Data.Migrations
                     b.HasIndex("ApartmentNumber");
 
                     b.ToTable("Apartments");
+
+                    b.HasData(
+                        new
+                        {
+                            ApartmentID = 1,
+                            Area = 0m,
+                            Inhabitants = 0,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("eHouseManager.Data.DatabaseModels.Event", b =>
@@ -170,8 +179,14 @@ namespace eHouseManager.Data.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -183,6 +198,9 @@ namespace eHouseManager.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserTypeCD")

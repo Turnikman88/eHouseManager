@@ -1,48 +1,194 @@
-﻿<!DOCTYPE html>
+﻿@{
+    this.ViewData[Constants.SESSION_AUTH_KEY] = this.Context.Session.Keys.Contains(Constants.SESSION_AUTH_KEY);
+    this.ViewData[Constants.SESSION_ROLE_KEY] = this.Context.Session.GetString(Constants.SESSION_ROLE_KEY);
+}
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - eHouseManager.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="eHouseManager">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <title>eHouseManager</title>
+    <link rel="icon" type="image/png" href="@Constants.DOMAIN_NAME/images/favicon.png" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/fontawesome.css">
+    <link rel="stylesheet" href="~/css/template.css">
+    <link rel="stylesheet" href="~/css/owl.css">
+    <link rel="stylesheet" href="~/css/site.css">
+    @RenderSection("Styles", required: false)
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">eHouseManager.Web</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <header class="">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <i class="fas fa-shipping-fast"></i>
+                <a class="navbar-brand mr-auto" asp-controller="Home" asp-action="Index"><h2><sup>e</sup>House<sub>Manager</sub></h2></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <div class="collapse navbar-collapse ml-auto" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li id="nav-home" class="nav-item active">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                Home
+                                <span class="sr-only">(current)</span>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li id="nav-about" class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="About">About Us</a>
                         </li>
+                        @*@if ((bool)this.ViewData[Constants.SESSION_AUTH_KEY]
+                            && this.ViewData[Constants.SESSION_ROLE_KEY].ToString() == Constants.ROLE_EMPLOYEE)
+                            {
+
+                                <li class="dropdown">
+                                    <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor:pointer;">
+                                        Controller
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a asp-controller="City" asp-action="Index" class="custom-dropdown-item">City</a>
+                                        <a asp-controller="Country" asp-action="Index" class="custom-dropdown-item">Country</a>
+                                        <a asp-controller="Customer" asp-action="Index" class="custom-dropdown-item">Customer</a>
+                                        <a asp-controller="Parcel" asp-action="Index" class="custom-dropdown-item">Parcel</a>
+                                        <a asp-controller="Shipment" asp-action="Index" class="custom-dropdown-item">Shipment</a>
+                                        <a asp-controller="Warehouse" asp-action="Index" class="custom-dropdown-item">Warehouse</a>
+                                    </div>
+                                </li>
+
+                            }*@
+                    </ul>
+                </div>
+
+                <div class="functional-buttons">
+                    <ul>
+                        @if (!(bool)this.ViewData[Constants.SESSION_AUTH_KEY])
+                        {
+                            <li><a asp-controller="Auth" asp-action="Login">Log in</a></li>
+                            <li><a asp-controller="Auth" asp-action="Register">Sign Up</a></li>
+                        }
+                        else
+                        {
+
+                            @if (this.ViewData[Constants.SESSION_ROLE_KEY].ToString() == Constants.ROLE_USER)
+                            {
+                                <li><a asp-controller="Parcel" asp-action="CustomerParcels" class="test-btn">Parcels</a></li>
+                            }
+
+                            <li><a asp-controller="Auth" asp-action="Logout">Log Out</a></li>
+                        }
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    @RenderBody()
+
+
+    <div class="modal" id="form-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer>
         <div class="container">
-            &copy; 2022 - eHouseManager.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-item">
+                        <div class="footer-heading">
+                            <h2>About Us</h2>
+                        </div>
+                        <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-item">
+                        <div class="footer-heading">
+                            <h2>Hosting Plans</h2>
+                        </div>
+                        <ul class="footer-list">
+                            <li><a href="#">Amazing Company 5X</a></li>
+                            <li><a href="#">Best Delivery S 10X</a></li>
+                            <li><a href="#">Advanced Cargo</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-item">
+                        <div class="footer-heading">
+                            <h2>Useful Links</h2>
+                        </div>
+                        <ul class="footer-list">
+                            <li><a href="#">Parcel Tracking Platform</a></li>
+                            <li><a href="#">Light Speed Zone</a></li>
+                            <li><a href="#">Content Delivery Network</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-item">
+                        <div class="footer-heading">
+                            <h2>More Information</h2>
+                        </div>
+                        <ul class="footer-list">
+                            <li>Phone: <a href="#">010-020-0560</a></li>
+                            <li>Email: <a href="#">mail@company.com</a></li>
+                            <li>Support: <a href="#">support@company.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Footer Ends Here -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Additional Scripts -->
+    <script src="~/js/custom.js"></script>
+    <script src="~/js/owl.js"></script>
+    <script src="~/js/accordions.js"></script>
+
+
+    <script language="text/Javascript">
+        cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+        function clearField(t) {                   //declaring the array outside of the
+            if (!cleared[t.id]) {                      // function makes it static and global
+                cleared[t.id] = 1;  // you could use true and false, but that's more typing
+                t.value = '';         // with more chance of typos
+                t.style.color = '#fff';
+            }
+        }
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

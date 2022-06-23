@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\eHouseManager.Common\eHouseManager.Common.csproj" />
     <ProjectReference Include="..\eHouseManager.Data\eHouseManager.Data.csproj" />
     <ProjectReference Include="..\eHouseManager.Services\eHouseManager.Services.csproj" />
   </ItemGroup>

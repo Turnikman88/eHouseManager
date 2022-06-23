@@ -5,7 +5,7 @@ using System.Text;
 
 namespace eHouseManager.Services.Contracts
 {
-    public interface IEvent : ICrud<Event>
+    public interface IEventService : ICrud<Event>
     {
     }
 }

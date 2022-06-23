@@ -5,7 +5,7 @@ using System.Text;
 
 namespace eHouseManager.Services.Contracts
 {
-    public interface IUser : ICrud<User>
+    public interface ITaxTypeService : ICrud<TaxType>
     {
     }
 }
