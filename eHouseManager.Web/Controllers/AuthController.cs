@@ -1,5 +1,6 @@
 ﻿using eHouseManager.Common;
 using eHouseManager.Services.Contracts;
+using eHouseManager.Web.Attributes;
 using eHouseManager.Web.Mappers;
 using eHouseManager.Web.Models;
 using Microsoft.AspNetCore.Http;
@@ -98,6 +99,7 @@ namespace eHouseManager.Web.Controllers
             return this.Redirect(nameof(Login));
         }
 
+        [Authorize(Roles = Constants.ROLE_USER)]
         public ActionResult Settings()
         {
             var userId = int.Parse(this.HttpContext.Session.GetString(Constants.SESSION_ID_KEY));
