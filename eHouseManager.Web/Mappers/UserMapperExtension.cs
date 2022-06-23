@@ -18,7 +18,33 @@ namespace eHouseManager.Web.Mappers
                 IsActive = true,
                 Password = model.Password,
                 Phone = model.Phone,
-                Role  = Constants.ROLE_USER
+                Role  = Constants.ROLE_USER,
+                FirstName = model.FirstName,
+                LastName = model.LastName
+            };
+        }
+
+        public static SettingsViewModel GetSettingsModel(this UserDTO model)
+        {
+            return new SettingsViewModel
+            {
+                Email = model.Email,
+                Password = model.Password,
+                Phone = model.Phone,
+                FirstName = model.FirstName,
+                LastName = model.LastName
+            };
+        }
+
+        public static UserDTO GetDTOFromSettingsModel(this SettingsViewModel model)
+        {
+            return new UserDTO
+            {
+                Email = model.Email,
+                Password = model.Password,
+                Phone = model.Phone,
+                FirstName = model.FirstName,
+                LastName = model.LastName
             };
         }
     }

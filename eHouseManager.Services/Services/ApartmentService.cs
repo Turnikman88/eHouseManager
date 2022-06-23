@@ -5,6 +5,7 @@ using eHouseManager.Services.Contracts;
 using eHouseManager.Services.DTOMappers;
 using eHouseManager.Services.DTOs;
 using eHouseManager.Services.Helpers;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,13 @@ namespace eHouseManager.Services.Services
             return _db.Apartments.Select(x => x.ToDTO());
         }
 
+        public IEnumerable<ApartmentDTO> GetAllByUserId(int id)
+        {
+            return _db.UserApartmentAccesses.Where(x => x.UserID == id)
+                .Include(x => x.Apartment)
+                .Select(x => x.Apartment.ToDTO());
+        }
+
         public ApartmentDTO GetById(int id)
         {
             return _db.Apartments.FirstOrDefault(x => x.ApartmentID == id)?.ToDTO() ?? throw new AppException(Constants.ENTITY_NOT_FOUND);
@@ -59,11 +67,7 @@ namespace eHouseManager.Services.Services
         {
             var modelToUpdate = _db.Apartments.FirstOrDefault(x => x.ApartmentID == id);
 
-            modelToUpdate.ApartmentNumber = obj.ApartmentNumber;
-            modelToUpdate.Area = obj.Area;
-            modelToUpdate.Inhabitants = obj.Inhabitants;
-            modelToUpdate.Owner = obj.Owner;
-            modelToUpdate.ModifiedBy = obj.ModifiedBy;
+            PropertyCopier<ApartmentDTO, Apartment>.Copy(obj, modelToUpdate);
 
             _db.SaveChanges();
 

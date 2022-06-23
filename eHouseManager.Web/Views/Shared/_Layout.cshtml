@@ -85,9 +85,11 @@
                         else
                         {
 
+                            <li><a asp-controller="Auth" asp-action="Settings">Settings</a></li>
+
                             @if (this.ViewData[Constants.SESSION_ROLE_KEY].ToString() == Constants.ROLE_USER)
                             {
-                                <li><a asp-controller="Parcel" asp-action="CustomerParcels" class="test-btn">Parcels</a></li>
+                                <li><a asp-controller="Apartment" asp-action="UserInfo" class="test-btn">My Apartments</a></li>
                             }
 
                             <li><a asp-controller="Auth" asp-action="Logout">Log Out</a></li>

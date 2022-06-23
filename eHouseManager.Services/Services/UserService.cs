@@ -57,16 +57,7 @@ namespace eHouseManager.Services.Services
         public UserDTO Update(int id, UserDTO obj)
         {
             var modelToUpdate = _db.Users.FirstOrDefault(x => x.UserID == id);
-
-            modelToUpdate.Email = obj.Email;
-            modelToUpdate.FirstName = obj.FirstName;
-            modelToUpdate.LastName = obj.LastName;
-            modelToUpdate.IsActive = obj.IsActive;
-            modelToUpdate.ModifiedBy = obj.ModifiedBy;
-            modelToUpdate.Password = obj.Password;
-            modelToUpdate.Phone = obj.Phone;
-            modelToUpdate.UserID = obj.UserID;
-            modelToUpdate.UserTypeCD = obj.UserTypeCD;
+            PropertyCopier<UserDTO, User>.Copy(obj, modelToUpdate);
 
             _db.SaveChanges();
 

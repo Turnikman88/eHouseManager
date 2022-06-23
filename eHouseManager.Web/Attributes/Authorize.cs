@@ -34,7 +34,7 @@ namespace eHouseManager.Web.Attributes
                 if (QueryId != null && context.HttpContext.Request.Query.ContainsKey(QueryId))
                 {
                     var queryUserId = context.HttpContext.Request.Query[QueryId];
-                    if (queryUserId != user.UserID)
+                    if (queryUserId != user.UserId)
                     {
                         throw new UnauthorizedAppException(Constants.NOT_AUTHORIZED);
                     }

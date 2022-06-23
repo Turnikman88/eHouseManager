@@ -59,13 +59,9 @@ namespace eHouseManager.Web.Controllers
             {
                 this.HttpContext.Session.SetString(Constants.SESSION_AUTH_KEY, credentials);
                 this.HttpContext.Session.SetString(Constants.SESSION_ROLE_KEY, user.Role);
-                this.HttpContext.Session.SetString(Constants.SESSION_ID_KEY, user.UserID.ToString());
+                this.HttpContext.Session.SetString(Constants.SESSION_ID_KEY, user.UserId.ToString());
 
-                if (user.Role == Constants.ROLE_USER)
-                {
-                    return this.RedirectToAction("CustomerParcels", "Parcel");
-                }
-                return this.RedirectToAction("index", "home");
+                return this.RedirectToAction("Index", "Home");
             }
         }
 
@@ -102,5 +98,29 @@ namespace eHouseManager.Web.Controllers
             return this.Redirect(nameof(Login));
         }
 
+        public ActionResult Settings()
+        {
+            var userId = int.Parse(this.HttpContext.Session.GetString(Constants.SESSION_ID_KEY));
+
+            var user = _us.GetById(userId);
+
+            return View(user.GetSettingsModel());
+        }
+
+        //POST: /auth/settings
+        [HttpPost]
+        public IActionResult Settings(SettingsViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View();
+            }
+
+            var userId = int.Parse(this.HttpContext.Session.GetString(Constants.SESSION_ID_KEY));
+
+            _us.Update(userId, model.GetDTOFromSettingsModel());
+
+            return this.RedirectToAction("Index", "Home");
+        }
     }
 }
