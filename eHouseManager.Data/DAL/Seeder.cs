@@ -14,7 +14,7 @@ namespace eHouseManager.Data.DAL
             {
                 new Apartment()
                 {
-                    ApartmentID = 1
+                    Id = 1
                 }
             };
 

@@ -21,7 +21,7 @@ namespace eHouseManager.Services.Services
         }
         public UserDTO Delete(int id)
         {
-            var userToDelete = _db.Users.FirstOrDefault(x => x.UserID == id) ?? throw new AppException(Constants.ENTITY_NOT_FOUND);
+            var userToDelete = _db.Users.FirstOrDefault(x => x.Id == id) ?? throw new AppException(Constants.ENTITY_NOT_FOUND);
             _db.Users.Remove(userToDelete);
             _db.SaveChanges();
             return userToDelete.ToDTO();
@@ -34,7 +34,7 @@ namespace eHouseManager.Services.Services
 
         public UserDTO GetById(int id)
         {
-            return _db.Users.FirstOrDefault(x => x.UserID == id)?.ToDTO() ?? throw new AppException(Constants.ENTITY_NOT_FOUND);
+            return _db.Users.FirstOrDefault(x => x.Id == id)?.ToDTO() ?? throw new AppException(Constants.ENTITY_NOT_FOUND);
         }
 
         public int GetCount()
@@ -49,14 +49,14 @@ namespace eHouseManager.Services.Services
             _db.Add(model);
             _db.SaveChanges();
 
-            model = _db.Users.FirstOrDefault(x => x.UserID == model.UserID);
+            model = _db.Users.FirstOrDefault(x => x.Id == model.Id);
 
             return model.ToDTO();
         }
 
         public UserDTO Update(int id, UserDTO obj)
         {
-            var modelToUpdate = _db.Users.FirstOrDefault(x => x.UserID == id);
+            var modelToUpdate = _db.Users.FirstOrDefault(x => x.Id == id);
             PropertyCopier<UserDTO, User>.Copy(obj, modelToUpdate);
 
             _db.SaveChanges();

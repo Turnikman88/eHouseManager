@@ -12,12 +12,15 @@ namespace eHouseManager.Services.DTOMappers
         {
             return new ApartmentDTO
             {
-                ApartmentID = model.ApartmentID,
+                Id = model.Id,
                 ApartmentNumber = model.ApartmentNumber,
                 Area = model.Area,
-                Inhabitants = model.Inhabitants,
+                InhabitantsCount = model.InhabitantsCount,
                 ModifiedBy = model.ModifiedBy,
-                Owner = model.Owner
+                Owner = model.Owner,
+                AreTaxesPaid = model.AreTaxesPaid,
+                Address = model.Address,
+                TaxPaymentDTOs = PopulateTaxpayments(model.TaxPayments)
             };
         }
 
@@ -25,13 +28,23 @@ namespace eHouseManager.Services.DTOMappers
         {
             return new Apartment
             {
-                ApartmentID = model.ApartmentID,
+                Id = model.Id,
                 ApartmentNumber = model.ApartmentNumber,
                 Area = model.Area,
-                Inhabitants = model.Inhabitants,
+                InhabitantsCount = model.InhabitantsCount,
                 ModifiedBy = model.ModifiedBy,
-                Owner = model.Owner
+                Owner = model.Owner,
+                AreTaxesPaid = model.AreTaxesPaid,
+                Address = model.Address
             };
+        }
+
+        private static IEnumerable<TaxPaymentDTO> PopulateTaxpayments(IEnumerable<TaxPayment> models)
+        {
+            foreach (var item in models)
+            {
+                yield return item.ToDTO();
+            }
         }
     }
 }

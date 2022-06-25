@@ -20,7 +20,7 @@ namespace eHouseManager.Services.DTOMappers
                 ModifiedBy = model.ModifiedBy,
                 Password = model.Password,
                 Phone = model.Phone,
-                UserId = model.UserID,
+                Id = model.Id,
                 UserTypeCD = model.UserTypeCD
             };
         }
@@ -37,7 +37,7 @@ namespace eHouseManager.Services.DTOMappers
                 ModifiedBy = model.ModifiedBy,
                 Password = model.Password,
                 Phone = model.Phone,
-                UserID = model.UserId,
+                Id = model.Id,
                 UserTypeCD = model.UserTypeCD
             };
         }

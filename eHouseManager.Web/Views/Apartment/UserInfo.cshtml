@@ -1,0 +1,47 @@
+﻿@model IEnumerable<UserApartmentViewModel>
+@section Styles{
+    <link rel="stylesheet" href="~/css/form.css">
+
+}
+<div class="render-body" style="padding-left: 100px; padding-right: 100px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col flex-sm-wrap-reverse align-content-center" style="margin-right: 80px;">
+                <img src="@Constants.DOMAIN_NAME/images/apartment-user.png" alt="DeliverIT login image" style="width:100%; height: auto; min-width: 400px;" />
+            </div>
+            <div class="col">
+                <div id="view-all">
+                    <div class="col" style="width:auto; height:400px; overflow:auto; padding: 15px;">
+                        <table class="table-custom">
+                            <tr>
+                                <th scope="col">Apartment Number</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Area</th>
+                                <th scope="col">Are Taxes Paid</th>
+                                @*                                <th scope="col"><button class="btn btn-outline-success" onclick="showInPopup('@Url.Action("Create", "Country")', 'Create')">Add New</button></th>
+                                *@
+                            </tr>
+                            @if (Model.Count() == 0)
+                            {
+                                <tr>
+                                    <th scope="col">No Apartments were found!</th>
+                                </tr>
+                            }
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td scope="col">@item.ApartmentNumber</td>
+                                    <td scope="col">@item.Address</td>
+                                    <td scope="col">@item.Area</td>
+                                    <td scope="col">@item.AreTaxesPaid</td>
+                                    @*                                    <td scope="col"><button class="btn btn-outline-primary btn-sm" onclick="showInPopup('@Url.Action("Update", "Country", new { id = item.Id, name = item.Name})', 'Update')">Edit</button></td>
+                                    *@                                    <!--<td scope="col"><button class="btn btn-outline-danger btn-sm" onclick="ExecuteEmptyAjax('@Url.Action("Delete", "Country", new { id = item.Id})')">Delete</button></td>-->
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

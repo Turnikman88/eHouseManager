@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eHouseManager.Data.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace eHouseManager.Data.DatabaseModels
 {
-    public class User
+    public class User : BaseModel<int>
     {
-        [Key]
-        public int UserID { get; set; }
+        public User()
+        {
+            UserApartmentAccesses = new HashSet<UserApartmentAccess>();
+            UserEventAccesses = new HashSet<UserEventAccess>();
+        }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Role { get; set; }
@@ -17,10 +21,9 @@ namespace eHouseManager.Data.DatabaseModels
         public string Password { get; set; }
         public string UserTypeCD { get; set; }
         public string Phone { get; set; }
-        public bool IsActive { get; set; }        
-        public DateTime ModifiedOn { get; set; }
-        public string ModifiedBy { get; set; }
+        public bool IsActive { get; set; }
 
         public ICollection<UserApartmentAccess> UserApartmentAccesses { get; set; }
+        public ICollection<UserEventAccess> UserEventAccesses { get; set; }
     }
 }

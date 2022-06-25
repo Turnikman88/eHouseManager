@@ -11,8 +11,9 @@ namespace eHouseManager.Data.DataConfigurations
     {
         public void Configure(EntityTypeBuilder<Apartment> builder)
         {
-            builder.HasIndex(x => x.ApartmentID);
             builder.HasIndex(x => x.ApartmentNumber);
+            builder.HasIndex(x => x.Id);
+            builder.Property(x => x.ModifiedOn).HasDefaultValue(DateTime.UtcNow);
         }
     }
 }

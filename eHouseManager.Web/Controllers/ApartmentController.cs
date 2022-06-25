@@ -1,6 +1,7 @@
 ﻿using eHouseManager.Common;
 using eHouseManager.Services.Contracts;
 using eHouseManager.Web.Attributes;
+using eHouseManager.Web.Mappers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -18,15 +19,15 @@ namespace eHouseManager.Web.Controllers
             _as = @as;
         }
 
-        //[Authorize(Roles = Constants.ROLE_USER)]
+        [Authorize(Roles = Constants.ROLE_USER)]
 
-        /*public IActionResult UserInfo()
+        public IActionResult UserInfo()
         {
             var userId = int.Parse(this.HttpContext.Session.GetString(Constants.SESSION_ID_KEY));
 
-            var apartmentInfo = _as.GetAllByUserId(userId);
+            var apartmentInfo = _as.GetAllByUserId(userId).Select(x => x.GetUserApartmentModel());
 
-            return View(new CountryViewModel { Name = name });
-        }*/
+            return View(apartmentInfo);
+        }
     }
 }

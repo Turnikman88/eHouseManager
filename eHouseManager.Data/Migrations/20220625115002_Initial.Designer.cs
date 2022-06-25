@@ -10,8 +10,8 @@ using eHouseManager.Data;
 namespace eHouseManager.Data.Migrations
 {
     [DbContext(typeof(eHouseManagerDbContext))]
-    [Migration("20220622163607_initial")]
-    partial class initial
+    [Migration("20220625115002_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,18 +23,67 @@ namespace eHouseManager.Data.Migrations
 
             modelBuilder.Entity("eHouseManager.Data.DatabaseModels.Apartment", b =>
                 {
-                    b.Property<int>("ApartmentID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ApartmentNumber")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("AreTaxesPaid")
+                        .HasColumnType("bit");
 
                     b.Property<decimal>("Area")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Inhabitants")
+                    b.Property<int>("InhabitantsCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedOn")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 6, 25, 11, 50, 1, 850, DateTimeKind.Utc).AddTicks(5980));
+
+                    b.Property<string>("ObligationId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Owner")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApartmentNumber");
+
+                    b.HasIndex("Id");
+
+                    b.ToTable("Apartments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AreTaxesPaid = false,
+                            Area = 0m,
+                            InhabitantsCount = 0,
+                            ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
+            modelBuilder.Entity("eHouseManager.Data.DatabaseModels.ApartmentObligationAccess", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ApartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("ModifiedBy")
@@ -43,21 +92,21 @@ namespace eHouseManager.Data.Migrations
                     b.Property<DateTime>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Owner")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ObligationId")
+                        .HasColumnType("int");
 
-                    b.HasKey("ApartmentID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ApartmentID");
+                    b.HasIndex("ApartmentId");
 
-                    b.HasIndex("ApartmentNumber");
+                    b.HasIndex("ObligationId");
 
-                    b.ToTable("Apartments");
+                    b.ToTable("ApartmentObligationAccesses");
                 });
 
             modelBuilder.Entity("eHouseManager.Data.DatabaseModels.Event", b =>
                 {
-                    b.Property<int>("EventID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -77,9 +126,37 @@ namespace eHouseManager.Data.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("EventID");
+                    b.HasKey("Id");
 
                     b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("eHouseManager.Data.DatabaseModels.Obligation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedOn")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 6, 25, 11, 50, 1, 856, DateTimeKind.Utc).AddTicks(4380));
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id");
+
+                    b.ToTable("Obligations");
                 });
 
             modelBuilder.Entity("eHouseManager.Data.DatabaseModels.TaxPayment", b =>
@@ -92,7 +169,7 @@ namespace eHouseManager.Data.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ApartmentID")
+                    b.Property<int>("ApartmentId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("DueAmount")
@@ -102,7 +179,9 @@ namespace eHouseManager.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 6, 25, 11, 50, 1, 857, DateTimeKind.Utc).AddTicks(7943));
 
                     b.Property<int>("Month")
                         .HasColumnType("int");
@@ -118,7 +197,7 @@ namespace eHouseManager.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApartmentID");
+                    b.HasIndex("ApartmentId");
 
                     b.HasIndex("Id");
 
@@ -147,7 +226,9 @@ namespace eHouseManager.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 6, 25, 11, 50, 1, 861, DateTimeKind.Utc).AddTicks(6241));
 
                     b.Property<string>("TaxCD")
                         .HasColumnType("nvarchar(max)");
@@ -164,7 +245,7 @@ namespace eHouseManager.Data.Migrations
 
             modelBuilder.Entity("eHouseManager.Data.DatabaseModels.User", b =>
                 {
-                    b.Property<int>("UserID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -172,14 +253,22 @@ namespace eHouseManager.Data.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 6, 25, 11, 50, 1, 862, DateTimeKind.Utc).AddTicks(3654));
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
@@ -187,12 +276,15 @@ namespace eHouseManager.Data.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserTypeCD")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("Id");
 
                     b.ToTable("Users");
                 });
@@ -204,7 +296,7 @@ namespace eHouseManager.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ApartmentID")
+                    b.Property<int>("ApartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("ModifiedBy")
@@ -213,23 +305,66 @@ namespace eHouseManager.Data.Migrations
                     b.Property<DateTime>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserID")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApartmentID");
+                    b.HasIndex("ApartmentId");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserApartmentAccesses");
+                });
+
+            modelBuilder.Entity("eHouseManager.Data.DatabaseModels.UserEventAccess", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserEventAccesses");
+                });
+
+            modelBuilder.Entity("eHouseManager.Data.DatabaseModels.ApartmentObligationAccess", b =>
+                {
+                    b.HasOne("eHouseManager.Data.DatabaseModels.Apartment", "Apartment")
+                        .WithMany("ApartmentObligationAccesses")
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eHouseManager.Data.DatabaseModels.Obligation", "Obligation")
+                        .WithMany("ApartmentObligationAccesses")
+                        .HasForeignKey("ObligationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eHouseManager.Data.DatabaseModels.TaxPayment", b =>
                 {
                     b.HasOne("eHouseManager.Data.DatabaseModels.Apartment", "Apartment")
                         .WithMany("TaxPayments")
-                        .HasForeignKey("ApartmentID")
+                        .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -238,13 +373,28 @@ namespace eHouseManager.Data.Migrations
                 {
                     b.HasOne("eHouseManager.Data.DatabaseModels.Apartment", "Apartment")
                         .WithMany("UserApartmentAccesses")
-                        .HasForeignKey("ApartmentID")
+                        .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eHouseManager.Data.DatabaseModels.User", "User")
                         .WithMany("UserApartmentAccesses")
-                        .HasForeignKey("UserID")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("eHouseManager.Data.DatabaseModels.UserEventAccess", b =>
+                {
+                    b.HasOne("eHouseManager.Data.DatabaseModels.Event", "Event")
+                        .WithMany("UserEventAccesses")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eHouseManager.Data.DatabaseModels.User", "User")
+                        .WithMany("UserEventAccesses")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

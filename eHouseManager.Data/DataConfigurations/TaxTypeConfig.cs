@@ -12,6 +12,7 @@ namespace eHouseManager.Data.DataConfigurations
         public void Configure(EntityTypeBuilder<TaxType> builder)
         {
             builder.HasIndex(x => x.Id);
+            builder.Property(x => x.ModifiedOn).HasDefaultValue(DateTime.UtcNow);
         }
     }
 }

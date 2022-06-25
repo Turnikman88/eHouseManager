@@ -7,16 +7,12 @@ using System.Text;
 
 namespace eHouseManager.Data.DataConfigurations
 {
-    class TaxPaymentConfig : IEntityTypeConfiguration<TaxPayment>
+    public class ObligationConfig : IEntityTypeConfiguration<Obligation>
     {
-        public void Configure(EntityTypeBuilder<TaxPayment> builder)
+        public void Configure(EntityTypeBuilder<Obligation> builder)
         {
             builder.HasIndex(x => x.Id);
             builder.Property(x => x.ModifiedOn).HasDefaultValue(DateTime.UtcNow);
-            builder.HasIndex(x => x.Year);
-            builder.HasOne(x => x.Apartment)
-                .WithMany(x => x.TaxPayments)
-                .HasForeignKey(x => x.ApartmentId);
         }
     }
 }

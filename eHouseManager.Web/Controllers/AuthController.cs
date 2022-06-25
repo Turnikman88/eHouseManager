@@ -60,7 +60,7 @@ namespace eHouseManager.Web.Controllers
             {
                 this.HttpContext.Session.SetString(Constants.SESSION_AUTH_KEY, credentials);
                 this.HttpContext.Session.SetString(Constants.SESSION_ROLE_KEY, user.Role);
-                this.HttpContext.Session.SetString(Constants.SESSION_ID_KEY, user.UserId.ToString());
+                this.HttpContext.Session.SetString(Constants.SESSION_ID_KEY, user.Id.ToString());
 
                 return this.RedirectToAction("Index", "Home");
             }

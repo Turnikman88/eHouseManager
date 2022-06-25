@@ -6,7 +6,8 @@ using System.Text;
 
 namespace eHouseManager.Services.Contracts
 {
-    public interface IEventService : ICrud<EventDTO>
+    public interface IObligationService : ICrud<ObligationDTO>
     {
+
     }
 }
