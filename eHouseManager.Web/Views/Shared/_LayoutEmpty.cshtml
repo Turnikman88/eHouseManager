@@ -1,0 +1,40 @@
+﻿@{
+    this.ViewData[Constants.SESSION_AUTH_KEY] = this.Context.Session.Keys.Contains(Constants.SESSION_AUTH_KEY);
+    this.ViewData[Constants.SESSION_ROLE_KEY] = this.Context.Session.GetString(Constants.SESSION_ROLE_KEY);
+}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <title>DeliverIT</title>
+
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/fontawesome.css">
+    <link rel="stylesheet" href="~/css/template.css">
+    <link rel="stylesheet" href="~/css/owl.css">
+    <link rel="stylesheet" href="~/css/site.css">
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+
+    @RenderBody()
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/custom.js"></script>
+    <script src="~/js/owl.js"></script>
+    <script src="~/js/accordions.js"></script>
+
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

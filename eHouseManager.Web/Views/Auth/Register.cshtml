@@ -1,0 +1,55 @@
+﻿@model UserViewModel
+@section Styles{
+    <link rel="stylesheet" href="~/css/form.css">
+}
+<div class="render-body">
+    <div class="container">
+        <div class="row">
+            <div class="col flex-sm-wrap-reverse ">
+                <img src="@Constants.DOMAIN_NAME/images/register.png" alt="eHouseManager Register image" style="width:100%; height: auto; min-width: 400px;" />
+            </div>
+            <div class="col">
+                <form asp-action="Register">
+                    <div>
+                        <br />
+                        <input asp-for="FirstName" placeholder="Име" class="fadeIn second" />
+                        <span asp-validation-for="FirstName" class="form-error"></span>
+                    </div>
+                    <div>
+                        <br />
+                        <input asp-for="LastName" placeholder="Фамилия" class="fadeIn second" />
+                        <span asp-validation-for="LastName" class="form-error"></span>
+                    </div>
+                    <div>
+                        <br />
+                        <input asp-for="Phone" placeholder="Телефонен номер" class="fadeIn second" />
+                        <span asp-validation-for="Phone" class="form-error"></span>
+                    </div>
+                    <div>
+                        <br />
+                        <input asp-for="Email" placeholder="Eл. поща" class="fadeIn second" />
+                        <span asp-validation-for="Email" class="form-error"></span>
+                    </div>
+                    <div>
+                        <br />
+                        <input asp-for="Password" placeholder="Парола" class="fadeIn second" />
+                        <span asp-validation-for="Password" class="form-error"></span>
+                    </div>
+                    <div>
+                        <br />
+                        <input asp-for="ConfirmPassword" placeholder="Потвърди парола" class="fadeIn second" />
+                        <span asp-validation-for="ConfirmPassword" class="form-error"></span>
+                    </div>
+
+                    <div style="text-align: center">
+                        <input type="submit" value="Регистрация" class="fadeIn fourth" style="margin-right: 85px;" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <partial name="_ValidationScriptsPartial" />
+}

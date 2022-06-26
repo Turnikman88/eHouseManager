@@ -1,0 +1,41 @@
+﻿@model IEnumerable<EventViewModel>
+@section Styles{
+    <link rel="stylesheet" href="~/css/form.css">
+
+}
+<div class="render-body" style="padding-left: 100px; padding-right: 100px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col flex-sm-wrap-reverse align-content-center" style="margin-right: 80px;">
+                <img src="@Constants.DOMAIN_NAME/images/event-user.png" alt="DeliverIT login image" style="width:100%; height: auto; min-width: 400px;" />
+            </div>
+            <div class="col">
+                <div id="view-all">
+                    <div class="col" style="width:auto; height:400px; overflow:auto; padding: 15px;">
+                        <table class="table-custom">
+                            <tr>
+                                <th scope="col">Статус</th>
+                                <th scope="col">Събитие</th>
+                                <th scope="col">Дата/Час</th>
+                            </tr>
+                            @if (Model.Count() == 0)
+                            {
+                                <tr>
+                                    <th scope="col">Няма намерени събития!</th>
+                                </tr>
+                            }
+                            @foreach (var item in Model)
+                            {
+                        <tr>
+                            <td scope="col">@item.Status</td>
+                            <td scope="col">@item.Title</td>
+                            <td scope="col">@item.EventDateTime</td>
+                        </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
