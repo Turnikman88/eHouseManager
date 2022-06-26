@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace eHouseManager.Data.Common
+namespace eHouseManager.Data.DatabaseModels
 {
-    public class BaseModel<TKey> : IBaseModel
+    [Table("log_18118025")]
+    public class Log 
     {
         [Key]
-        public TKey Id { get; set; }
-
-        [Column("ModifiedOn18118025")]
+        public int Id { get; set; }
+        public string TableName { get; set; }
+        public string OperationType { get; set; }
         public DateTime ModifiedOn { get; set; }
     }
 }

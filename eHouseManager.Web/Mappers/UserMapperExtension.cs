@@ -29,7 +29,6 @@ namespace eHouseManager.Web.Mappers
         {
             return new SettingsViewModel
             {
-                Email = model.Email,
                 Password = model.Password,
                 Phone = model.Phone,
                 FirstName = model.FirstName,
@@ -41,7 +40,6 @@ namespace eHouseManager.Web.Mappers
         {
             return new UserDTO
             {
-                Email = model.Email,
                 Password = model.Password,
                 Phone = model.Phone,
                 FirstName = model.FirstName,

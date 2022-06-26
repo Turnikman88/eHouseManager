@@ -74,6 +74,8 @@ namespace eHouseManager.Services.Services
 
             PropertyCopier<EventDTO, Event>.Copy(obj, modelToUpdate);
 
+            modelToUpdate.ModifiedOn = DateTime.UtcNow;
+
             _db.SaveChanges();
 
             return modelToUpdate.ToDTO();

@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace eHouseManager.Data.DatabaseModels
 {
-    [Table("Apartments23223233232")]
     public class Apartment : BaseModel<int>
     {
         public Apartment()

@@ -40,7 +40,6 @@ namespace eHouseManager.Web.Models
         public string Phone { get; set; }
 
         [Required]
-        [RegularExpression("(.{10})", ErrorMessage = "Length must be 10.")]
         public int UcnNumber { get; set; }
     }
 }

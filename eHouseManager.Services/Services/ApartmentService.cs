@@ -78,6 +78,8 @@ namespace eHouseManager.Services.Services
 
             PropertyCopier<ApartmentDTO, Apartment>.Copy(obj, modelToUpdate);
 
+            modelToUpdate.ModifiedOn = DateTime.UtcNow;
+
             _db.SaveChanges();
 
             return modelToUpdate.ToDTO();

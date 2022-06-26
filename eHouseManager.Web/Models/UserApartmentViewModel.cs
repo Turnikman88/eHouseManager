@@ -30,7 +30,6 @@ namespace eHouseManager.Web.Models
         public bool AreTaxesPaid { get; set; }
 
         [Required]
-        [RegularExpression("(.{10})", ErrorMessage = "Length must be 10.")]
         public int UcnNumber { get; set; }
 
         [Required]

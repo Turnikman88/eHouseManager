@@ -63,6 +63,8 @@ namespace eHouseManager.Services.Services
 
             PropertyCopier<TaxPaymentDTO, TaxPayment>.Copy(obj, modelToUpdate);
 
+            modelToUpdate.ModifiedOn = DateTime.UtcNow;
+
             _db.SaveChanges();
 
             return modelToUpdate.ToDTO();

@@ -30,6 +30,7 @@ namespace eHouseManager.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasDefaultSchema("18118025");
             modelBuilder.Seed();
             base.OnModelCreating(modelBuilder);
 
