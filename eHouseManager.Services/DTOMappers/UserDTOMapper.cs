@@ -17,10 +17,11 @@ namespace eHouseManager.Services.DTOMappers
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 IsActive = model.IsActive,
+                ModifiedBy = model.ModifiedBy,
                 Password = model.Password,
                 Phone = model.Phone,
                 Id = model.Id,
-                UcnNumber = model.UcnNumber
+                UserTypeCD = model.UserTypeCD
             };
         }
 
@@ -33,10 +34,11 @@ namespace eHouseManager.Services.DTOMappers
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 IsActive = model.IsActive,
+                ModifiedBy = model.ModifiedBy,
                 Password = model.Password,
                 Phone = model.Phone,
                 Id = model.Id,
-                UcnNumber = model.UcnNumber
+                UserTypeCD = model.UserTypeCD
             };
         }
     }

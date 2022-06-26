@@ -18,7 +18,7 @@ namespace eHouseManager.Data.DAL
                 }
             };
 
-            //mb.Entity<Apartment>().HasData(apartments);
+            mb.Entity<Apartment>().HasData(apartments);
         }
     }
 }

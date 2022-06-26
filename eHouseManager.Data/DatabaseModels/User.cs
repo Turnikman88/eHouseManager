@@ -19,9 +19,9 @@ namespace eHouseManager.Data.DatabaseModels
         public string Role { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public string UserTypeCD { get; set; }
         public string Phone { get; set; }
         public bool IsActive { get; set; }
-        public int UcnNumber { get; set; }
 
         public ICollection<UserApartmentAccess> UserApartmentAccesses { get; set; }
         public ICollection<UserEventAccess> UserEventAccesses { get; set; }

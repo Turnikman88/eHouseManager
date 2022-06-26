@@ -18,8 +18,7 @@ namespace eHouseManager.Web.Mappers
                 Address = model.Address,
                 AreTaxesPaid = model.AreTaxesPaid,
                 TaxPayments = model.TaxPaymentDTOs,
-                Area = model.Area,
-                UcnNumber = model.UcnNumber
+                Area = model.Area
             };
         }
 
@@ -31,55 +30,7 @@ namespace eHouseManager.Web.Mappers
                 ApartmentNumber = model.ApartmentNumber,
                 Address = model.Address,
                 AreTaxesPaid = model.AreTaxesPaid,
-                Area = model.Area,
-                InhabitantsCount = model.InhabitantsCount,
-                Owner = model.Owner,
-                UcnNumber = model.UcnNumber
-            };
-        }
-
-        public static ApartmentDTO GetCreateApartmentDTO(this UserApartmentViewModel model)
-        {
-            return new ApartmentDTO
-            {
-                Id = model.Id,
-                ApartmentNumber = model.ApartmentNumber,
-                Address = model.Address,
-                AreTaxesPaid = model.AreTaxesPaid,
-                Area = model.Area,
-                InhabitantsCount = model.InhabitantsCount,
-                Owner = model.Owner,
-                UcnNumber = model.UcnNumber
-            };
-        }
-
-        public static ApartmentDTO GetUpdateApartmentDTO(this UserApartmentViewModel model)
-        {
-            return new ApartmentDTO
-            {
-                Id = model.Id,
-                ApartmentNumber = model.ApartmentNumber,
-                Address = model.Address,
-                AreTaxesPaid = model.AreTaxesPaid,
-                Area = model.Area,
-                InhabitantsCount = model.InhabitantsCount,
-                Owner = model.Owner,
-                UcnNumber = model.UcnNumber
-            };
-        }
-
-        public static UserApartmentViewModel GetUpdateApartmentModel(this ApartmentDTO model)
-        {
-            return new UserApartmentViewModel
-            {
-                Id = model.Id,
-                ApartmentNumber = model.ApartmentNumber,
-                Address = model.Address,
-                AreTaxesPaid = model.AreTaxesPaid,
-                Area = model.Area,
-                InhabitantsCount = model.InhabitantsCount,
-                Owner = model.Owner,
-                UcnNumber = model.UcnNumber
+                Area = model.Area
             };
         }
     }

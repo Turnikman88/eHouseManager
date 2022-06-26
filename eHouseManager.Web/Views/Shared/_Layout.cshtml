@@ -46,12 +46,12 @@
                     <ul class="navbar-nav ml-auto">
                         <li id="nav-home" class="nav-item active">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">
-                                Home
+                                Начало
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li id="nav-about" class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="About">About Us</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="About">За нас</a>
                         </li>
                         @if ((bool)this.ViewData[Constants.SESSION_AUTH_KEY]
                             && this.ViewData[Constants.SESSION_ROLE_KEY].ToString() == Constants.ROLE_EMPLOYEE)
@@ -63,7 +63,7 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a asp-controller="Apartment" asp-action="Index" class="custom-dropdown-item">Create Apartment</a>
-                                        <a asp-controller="Event" asp-action="Index" class="custom-dropdown-item">Events</a>
+                                        <a asp-controller="Event" asp-action="AdminPanel" class="custom-dropdown-item">Events</a>
                                         
                                     </div>
                                 </li>
@@ -76,8 +76,8 @@
                     <ul>
                         @if (!(bool)this.ViewData[Constants.SESSION_AUTH_KEY])
                         {
-                            <li><a asp-controller="Auth" asp-action="Login">Log in</a></li>
-                            <li><a asp-controller="Auth" asp-action="Register">Sign Up</a></li>
+                            <li><a asp-controller="Auth" asp-action="Login">Вход</a></li>
+                            <li><a asp-controller="Auth" asp-action="Register">Регистрация</a></li>
                         }
                         else
                         {
@@ -85,12 +85,12 @@
 
                             @if (this.ViewData[Constants.SESSION_ROLE_KEY].ToString() == Constants.ROLE_USER)
                             {
-                                <li><a asp-controller="Auth" asp-action="Settings">Settings</a></li>
+                                <li><a asp-controller="Auth" asp-action="Settings">Настройки</a></li>
 
-                                <li><a asp-controller="Apartment" asp-action="UserInfo" class="test-btn">My Apartments</a></li>
+                                <li><a asp-controller="Apartment" asp-action="UserInfo" class="test-btn">Моите апартаменти</a></li>
                             }
 
-                            <li><a asp-controller="Auth" asp-action="Logout">Log Out</a></li>
+                            <li><a asp-controller="Auth" asp-action="Logout">Изход</a></li>
                         }
 
                     </ul>
@@ -120,35 +120,26 @@
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="footer-heading">
-                            <h2>About Us</h2>
+                            <h2>За нас</h2>
                         </div>
-                        <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
+                        <p>Ние сме млад и иновативен екип, с амбиция да модернизираме начина, по който се управляват сградите в режим на Етажна Собственост (ЕС), да улесним прозрачността и споделянето на информация между обитателите на ЕС. Стремим се да откликнем на индивидуалните потребности на всеки клиент, стъпвайки върху добрите и утвърдили се практики от споделения опит на Управители на ЕС. Работата с нас Ви гарантира спокойствие, комфорт и максимален стремеж от наша страна за задоволяване на нуждите на вашата ЕС.</p>
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="footer-item">
-                        <div class="footer-heading">
-                            <h2>Hosting Plans</h2>
-                        </div>
-                        <ul class="footer-list">
-                            <li><a href="#">Amazing Company 5X</a></li>
-                            <li><a href="#">Best Delivery S 10X</a></li>
-                            <li><a href="#">Advanced Cargo</a></li>
-                        </ul>
-                    </div>
-                </div>
+         
 
 
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="footer-heading">
-                            <h2>Useful Links</h2>
+                            <h2>Полезни връзки</h2>
                         </div>
                         <ul class="footer-list">
-                            <li><a href="#">Parcel Tracking Platform</a></li>
-                            <li><a href="#">Light Speed Zone</a></li>
-                            <li><a href="#">Content Delivery Network</a></li>
+                            <li><a href="https://www.mrrb.bg/bg/zakon-za-upravlenie-na-etajnata-sobstvenost/">ЗУЕС</a></li>
+                            <li><a href="http://www.cez.bg/bg/home.html">ЧЕЗ България</a></li>
+                            <li><a href="http://www.sofiyskavoda.bg/">Софийска вода</a></li>
+                            <li><a href="https://toplo.bg/">Топлофикация София</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -156,12 +147,12 @@
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="footer-heading">
-                            <h2>More Information</h2>
+                            <h2>Повече информация</h2>
                         </div>
                         <ul class="footer-list">
-                            <li>Phone: <a href="#">010-020-0560</a></li>
-                            <li>Email: <a href="#">mail@company.com</a></li>
-                            <li>Support: <a href="#">support@company.com</a></li>
+                            <li>Телефон <a href="#">010-020-0560</a></li>
+                            <li>Ел.поща: <a href="#">mail@company.com</a></li>
+                            <li>Подръжка <a href="#">support@company.com</a></li>
                         </ul>
                     </div>
                 </div>

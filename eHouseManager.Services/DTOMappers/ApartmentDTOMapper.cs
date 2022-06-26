@@ -16,10 +16,10 @@ namespace eHouseManager.Services.DTOMappers
                 ApartmentNumber = model.ApartmentNumber,
                 Area = model.Area,
                 InhabitantsCount = model.InhabitantsCount,
+                ModifiedBy = model.ModifiedBy,
                 Owner = model.Owner,
                 AreTaxesPaid = model.AreTaxesPaid,
                 Address = model.Address,
-                UcnNumber = model.UcnNumber,
                 TaxPaymentDTOs = PopulateTaxpayments(model.TaxPayments)
             };
         }
@@ -32,10 +32,10 @@ namespace eHouseManager.Services.DTOMappers
                 ApartmentNumber = model.ApartmentNumber,
                 Area = model.Area,
                 InhabitantsCount = model.InhabitantsCount,
+                ModifiedBy = model.ModifiedBy,
                 Owner = model.Owner,
                 AreTaxesPaid = model.AreTaxesPaid,
-                Address = model.Address,
-                UcnNumber = model.UcnNumber
+                Address = model.Address
             };
         }
 

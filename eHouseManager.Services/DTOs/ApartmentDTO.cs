@@ -14,7 +14,6 @@ namespace eHouseManager.Services.DTOs
         public string ModifiedBy { get; set; }
         public bool AreTaxesPaid { get; set; }
         public string Address { get; set; }
-        public int UcnNumber { get; set; }
         public IEnumerable<TaxPaymentDTO> TaxPaymentDTOs { get; set; }
     }
 }

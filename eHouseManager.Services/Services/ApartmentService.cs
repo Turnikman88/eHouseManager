@@ -61,14 +61,8 @@ namespace eHouseManager.Services.Services
             _db.Add(model);
             _db.SaveChanges();
 
-            var userId = _db.Users.Where(x => x.UcnNumber == obj.UcnNumber).Select(x => x.Id).FirstOrDefault();
-            if (userId != 0)
-            {
-                _db.UserApartmentAccesses.Add(new UserApartmentAccess { UserId = userId, ApartmentId = model.Id });
-                _db.SaveChanges();
-            }
-
             model = _db.Apartments.FirstOrDefault(x => x.Id == model.Id);
+
             return model.ToDTO();
         }
 
@@ -77,8 +71,6 @@ namespace eHouseManager.Services.Services
             var modelToUpdate = _db.Apartments.FirstOrDefault(x => x.Id == id);
 
             PropertyCopier<ApartmentDTO, Apartment>.Copy(obj, modelToUpdate);
-
-            modelToUpdate.ModifiedOn = DateTime.UtcNow;
 
             _db.SaveChanges();
 

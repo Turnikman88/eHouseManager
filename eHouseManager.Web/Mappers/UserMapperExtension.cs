@@ -20,8 +20,7 @@ namespace eHouseManager.Web.Mappers
                 Phone = model.Phone,
                 Role  = Constants.ROLE_USER,
                 FirstName = model.FirstName,
-                LastName = model.LastName,
-                UcnNumber = model.UcnNumber
+                LastName = model.LastName
             };
         }
 
@@ -29,6 +28,7 @@ namespace eHouseManager.Web.Mappers
         {
             return new SettingsViewModel
             {
+                Email = model.Email,
                 Password = model.Password,
                 Phone = model.Phone,
                 FirstName = model.FirstName,
@@ -40,10 +40,11 @@ namespace eHouseManager.Web.Mappers
         {
             return new UserDTO
             {
+                Email = model.Email,
                 Password = model.Password,
                 Phone = model.Phone,
                 FirstName = model.FirstName,
-                LastName = model.LastName,
+                LastName = model.LastName
             };
         }
     }

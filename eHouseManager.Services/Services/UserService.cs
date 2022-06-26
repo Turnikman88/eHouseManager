@@ -59,8 +59,6 @@ namespace eHouseManager.Services.Services
             var modelToUpdate = _db.Users.FirstOrDefault(x => x.Id == id);
             PropertyCopier<UserDTO, User>.Copy(obj, modelToUpdate);
 
-            modelToUpdate.ModifiedOn = DateTime.UtcNow;
-
             _db.SaveChanges();
 
             return modelToUpdate.ToDTO();

@@ -14,7 +14,6 @@ namespace eHouseManager.Services.DTOs
         public string Role { get; set; }
         public string UserTypeCD { get; set; }
         public string Phone { get; set; }
-        public int UcnNumber { get; set; }
         public bool IsActive { get; set; }
         public string ModifiedBy { get; set; }
     }

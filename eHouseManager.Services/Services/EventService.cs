@@ -56,13 +56,6 @@ namespace eHouseManager.Services.Services
             _db.Add(model);
             _db.SaveChanges();
 
-            var userId = _db.Users.Where(x => x.UcnNumber == obj.UcnNumber).Select(x => x.Id).FirstOrDefault();
-            if (userId != 0)
-            {
-                _db.UserEventAccesses.Add(new UserEventAccess { UserId = userId, EventId = model.Id });
-                _db.SaveChanges();
-            }
-
             model = _db.Events.FirstOrDefault(x => x.Id == model.Id);
 
             return model.ToDTO();
@@ -73,8 +66,6 @@ namespace eHouseManager.Services.Services
             var modelToUpdate = _db.Events.FirstOrDefault(x => x.Id == id);
 
             PropertyCopier<EventDTO, Event>.Copy(obj, modelToUpdate);
-
-            modelToUpdate.ModifiedOn = DateTime.UtcNow;
 
             _db.SaveChanges();
 

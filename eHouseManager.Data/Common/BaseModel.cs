@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace eHouseManager.Data.Common
@@ -11,8 +10,7 @@ namespace eHouseManager.Data.Common
     {
         [Key]
         public TKey Id { get; set; }
-
-        [Column("ModifiedOn18118025")]
         public DateTime ModifiedOn { get; set; }
+        public string ModifiedBy { get; set; }
     }
 }

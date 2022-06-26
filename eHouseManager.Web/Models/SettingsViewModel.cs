@@ -20,6 +20,10 @@ namespace eHouseManager.Web.Models
         public string LastName { get; set; }
 
         [Required]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        public string Email { get; set; }
+
+        [Required]
         [RegularExpression(@"/^\d{3}(-|\s)\d{3}(-|\s)\d{4}$|^\d{10}$|^1\s\d{3}(-|\s)\d{3}(-|\s)\d{4}$|^(1\s?)?\(\d{3}\)(\s|\-)?\d{3}\-\d{4}$/", ErrorMessage = "Invalid Phone")]
         public string Phone { get; set; }
 

@@ -15,8 +15,7 @@ namespace eHouseManager.Services.DTOMappers
                 Id = model.Id,
                 EventDateTime = model.EventDateTime,
                 Status = model.Status,
-                Title = model.Title,
-                UcnNumber = model.UcnNumber
+                Title = model.Title
             };
         }
 
@@ -27,8 +26,7 @@ namespace eHouseManager.Services.DTOMappers
                 Id = model.Id,
                 EventDateTime = model.EventDateTime,
                 Status = model.Status,
-                Title = model.Title,
-                UcnNumber = model.UcnNumber
+                Title = model.Title
             };
         }
     }

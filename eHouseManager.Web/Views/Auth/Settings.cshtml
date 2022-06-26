@@ -12,26 +12,31 @@
                 <form asp-action="Settings">
                     <div>
                         <br />
-                        <input asp-for="Password" placeholder="Password" type="password" class="fadeIn second" />
+                        <input asp-for="Email" placeholder="Ел.поща" class="fadeIn second" />
+                        <span asp-validation-for="Email" class="form-error"></span>
+                    </div>
+                    <div>
+                        <br />
+                        <input asp-for="Password" placeholder="Парола" type="password" class="fadeIn second" />
                         <span asp-validation-for="Password" class="form-error"></span>
                     </div>
                     <div>
                         <br />
-                        <input asp-for="FirstName" placeholder="First Name"  class="fadeIn second" />
+                        <input asp-for="FirstName" placeholder="Име"  class="fadeIn second" />
                         <span asp-validation-for="FirstName" class="form-error"></span>
                     </div>
                     <div>
                         <br />
-                        <input asp-for="LastName" placeholder="Last Name" class="fadeIn second" />
+                        <input asp-for="LastName" placeholder="Фамилия" class="fadeIn second" />
                         <span asp-validation-for="LastName" class="form-error"></span>
                     </div>
                     <div>
                         <br />
-                        <input asp-for="Phone" placeholder="Phone Number" class="fadeIn second" />
+                        <input asp-for="Phone" placeholder="Телефон" class="fadeIn second" />
                         <span asp-validation-for="Phone" class="form-error"></span>
                     </div>
                     <div style="text-align: center">
-                        <input type="submit" value="Save" class="fadeIn fourth" style="margin-right: 85px;" />
+                        <input type="submit" value="Запази" class="fadeIn fourth" style="margin-right: 85px;" />
 
                     </div>
                 </form>
