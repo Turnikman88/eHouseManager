@@ -42,7 +42,6 @@ namespace eHouseManager.Web
             services.AddTransient<IApartmentService, ApartmentService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IAuthService, AuthService>();
-            services.AddTransient<IObligationService, ObligationService>();
             services.AddTransient<IEventService, EventService>();
             services.AddTransient<ITaxPaymentService, TaxPaymentService>();
         }

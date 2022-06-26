@@ -16,7 +16,20 @@ namespace eHouseManager.Web.Mappers
                 Id = model.Id,
                 EventDateTime = model.EventDateTime,
                 Status = model.Status,
-                Title = model.Title
+                Title = model.Title,
+                UcnNumber = model.UcnNumber
+            };
+        }
+
+        public static EventDTO GetEventDTO(this EventViewModel model)
+        {
+            return new EventDTO
+            {
+                Id = model.Id,
+                EventDateTime = model.EventDateTime,
+                Status = model.Status,
+                Title = model.Title,
+                UcnNumber = model.UcnNumber
             };
         }
     }

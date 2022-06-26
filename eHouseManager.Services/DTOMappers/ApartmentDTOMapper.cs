@@ -20,6 +20,7 @@ namespace eHouseManager.Services.DTOMappers
                 Owner = model.Owner,
                 AreTaxesPaid = model.AreTaxesPaid,
                 Address = model.Address,
+                UcnNumber = model.UcnNumber,
                 TaxPaymentDTOs = PopulateTaxpayments(model.TaxPayments)
             };
         }
@@ -35,7 +36,8 @@ namespace eHouseManager.Services.DTOMappers
                 ModifiedBy = model.ModifiedBy,
                 Owner = model.Owner,
                 AreTaxesPaid = model.AreTaxesPaid,
-                Address = model.Address
+                Address = model.Address,
+                UcnNumber = model.UcnNumber
             };
         }
 

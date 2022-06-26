@@ -1,0 +1,36 @@
+﻿@model EventViewModel
+@section Styles{
+<link rel="stylesheet" href="~/css/form.css">
+}
+@{
+    Layout = "/Views/Shared/_LayoutEmpty.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <form asp-action="Update" asp-controller="Event">
+            <div>
+                <label>Status</label>
+                <input asp-for="Status" placeholder="Status" class="fourth" style="margin:-10px 0 10px 0; width: 100%;" />
+                <span asp-validation-for="Status" class="form-error"></span>
+            </div>
+            <div>
+                <label>Address</label>
+                <input asp-for="Title" placeholder="Title" class="fourth" style="margin:-10px 0 10px 0; width: 100%;" />
+                <span asp-validation-for="Title" class="form-error"></span>
+            </div>
+            <div>
+                <label>EventDateTime</label>
+                <input asp-for="EventDateTime" placeholder="EventDateTime" class="fourth" style="margin:-10px 0 10px 0; width: 100%;" />
+                <span asp-validation-for="EventDateTime" class="form-error"></span>
+            </div>
+            <div style="text-align: center">
+                <input type="submit" value="Update" class="fourth" style="margin: auto;" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+<partial name="_ValidationScriptsPartial" />
+}

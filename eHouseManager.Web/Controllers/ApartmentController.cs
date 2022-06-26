@@ -2,6 +2,7 @@
 using eHouseManager.Services.Contracts;
 using eHouseManager.Web.Attributes;
 using eHouseManager.Web.Mappers;
+using eHouseManager.Web.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -56,14 +57,41 @@ namespace eHouseManager.Web.Controllers
             return View(apartmentInfo);
         }
 
+        [Authorize(Roles = Constants.ROLE_EMPLOYEE)]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = Constants.ROLE_EMPLOYEE)]
         [HttpPost]
+        public IActionResult Create(UserApartmentViewModel model)
+        {
+            _as.Post(model.GetCreateApartmentDTO());
+            return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize(Roles = Constants.ROLE_EMPLOYEE)]
+        public IActionResult Update(int id)
+        {
+            var model = _as.GetById(id);
+            return View(model.GetUpdateApartmentModel());
+        }
+
+        [Authorize(Roles = Constants.ROLE_EMPLOYEE)]
+        [HttpPost]
+        public IActionResult Update(int id, UserApartmentViewModel model)
+        {
+            _as.Update(id, model.GetUpdateApartmentDTO());
+            return RedirectToAction(nameof(Index));
+        }
+
         [Authorize(Roles = Constants.ROLE_EMPLOYEE)]
         public IActionResult Delete(int id)
         {
             _as.Delete(id);
-            var apartmentInfo = _as.GetAll();
 
-            return View(apartmentInfo);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

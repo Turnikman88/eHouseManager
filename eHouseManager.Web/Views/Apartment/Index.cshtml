@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="~/css/form.css">
 }
 
-<div style="padding-top:170px; padding-bottom:170px; margin-left:20%; margin-right:20%;">
+<div style="padding-top:170px; padding-bottom:170px; margin-left:10%; margin-right:10%;">
     <div style="margin-right: 10%; margin-left: 10%;">
         <div id="view-all">
             <div class="col" style="width:auto; height:400px; overflow:auto; padding: 15px;">
@@ -14,6 +14,8 @@
                         <th scope="col">Address</th>
                         <th scope="col">Area</th>
                         <th scope="col">Taxes Paid?</th>
+                        <th scope="col">Inhabitants</th>
+                        <th scope="col">Owner</th>
                         <th scope="col"><button class="btn btn-outline-success" onclick="showInPopup('@Url.Action("Create", "Apartment")', 'Create')">Add New</button></th>
 
                     </tr>
@@ -30,9 +32,11 @@
                             <td scope="col">@item.Address</td>
                             <td scope="col">@item.Area</td>
                             <td scope="col">@(item.AreTaxesPaid == true ? "Yes" : "No")</td>
-                            @*<td scope="col"><button class="btn btn-outline-primary btn-sm" onclick="showInPopup('@Url.Action("Update", "Country", new { id = item.Id, name = item.Name})', 'Update')">Edit</button></td>
+                            <td scope="col">@item.InhabitantsCount</td>
+                            <td scope="col">@item.Owner</td>
+                            <th scope="col"><button class="btn btn-outline-primary" onclick="showInPopup('@Url.Action("Update", "Apartment", new { id = item.Id})', 'Update')">Edit</button></th>
                             <td scope="col"><button class="btn btn-outline-danger btn-sm" onclick="window.location='@Url.Action("Delete", "Apartment", new { id = item.Id})'">Delete</button></td>
-*@                        </tr>
+                        </tr>
                     }
                 </table>
             </div>

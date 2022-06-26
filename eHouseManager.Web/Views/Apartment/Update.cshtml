@@ -8,39 +8,34 @@
 
 <div class="row">
     <div class="col">
-        <form asp-action="Create" asp-controller="Apartment">
+        <form asp-action="Update" asp-controller="Apartment">
             <div>
-                <br />
+                <label>ApartmentNumber</label>
                 <input asp-for="ApartmentNumber" placeholder="Apartment Number" class="fourth" style="margin:-10px 0 10px 0; width: 100%;" />
                 <span asp-validation-for="ApartmentNumber" class="form-error"></span>
             </div>
             <div>
-                <br />
+                <label>Address</label>
                 <input asp-for="Address" placeholder="Address" class="fourth" style="margin:-10px 0 10px 0; width: 100%;" />
                 <span asp-validation-for="Address" class="form-error"></span>
             </div>
             <div>
-                <br />
+                <label>Owner</label>
                 <input asp-for="Owner" placeholder="Owner" class="fourth" style="margin:-10px 0 10px 0; width: 100%;" />
                 <span asp-validation-for="Owner" class="form-error"></span>
             </div>
             <div>
-                <br />
+                <label>InhabitantsCount</label>
                 <input asp-for="InhabitantsCount" placeholder="InhabitantsCount" class="fourth" style="margin:-10px 0 10px 0; width: 100%;" />
                 <span asp-validation-for="InhabitantsCount" class="form-error"></span>
             </div>
             <div>
-                <br />
+                <label>Area</label>
                 <input asp-for="Area" placeholder="Area" class="fourth" style="margin:-10px 0 10px 0; width: 100%;" />
                 <span asp-validation-for="Area" class="form-error"></span>
             </div>
-            <div>
-                <br />
-                <input asp-for="UcnNumber" placeholder="UcnNumber" class="fourth" style="margin:-10px 0 10px 0; width: 100%;" />
-                <span asp-validation-for="UcnNumber" class="form-error"></span>
-            </div>
             <div style="text-align: center">
-                <input type="submit" value="Create" class="fourth" style="margin: auto;" />
+                <input type="submit" value="Update" class="fourth" style="margin: auto;" />
             </div>
         </form>
     </div>

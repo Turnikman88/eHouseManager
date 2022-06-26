@@ -21,7 +21,8 @@ namespace eHouseManager.Services.DTOMappers
                 Password = model.Password,
                 Phone = model.Phone,
                 Id = model.Id,
-                UserTypeCD = model.UserTypeCD
+                UserTypeCD = model.UserTypeCD,
+                UcnNumber = model.UcnNumber
             };
         }
 
@@ -38,7 +39,8 @@ namespace eHouseManager.Services.DTOMappers
                 Password = model.Password,
                 Phone = model.Phone,
                 Id = model.Id,
-                UserTypeCD = model.UserTypeCD
+                UserTypeCD = model.UserTypeCD,
+                UcnNumber = model.UcnNumber
             };
         }
     }

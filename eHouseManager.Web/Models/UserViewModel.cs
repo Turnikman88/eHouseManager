@@ -38,5 +38,9 @@ namespace eHouseManager.Web.Models
         [Required]
         [RegularExpression(@"/^\d{3}(-|\s)\d{3}(-|\s)\d{4}$|^\d{10}$|^1\s\d{3}(-|\s)\d{3}(-|\s)\d{4}$|^(1\s?)?\(\d{3}\)(\s|\-)?\d{3}\-\d{4}$/", ErrorMessage = "Invalid Phone")]
         public string Phone { get; set; }
+
+        [Required]
+        [RegularExpression("(.{10})", ErrorMessage = "Length must be 10.")]
+        public int UcnNumber { get; set; }
     }
 }

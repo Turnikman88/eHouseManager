@@ -2,6 +2,7 @@
 using eHouseManager.Services.Contracts;
 using eHouseManager.Web.Attributes;
 using eHouseManager.Web.Mappers;
+using eHouseManager.Web.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -30,6 +31,50 @@ namespace eHouseManager.Web.Controllers
             return View(result);
         }
 
+        [Authorize(Roles = Constants.ROLE_EMPLOYEE)]
+        public IActionResult Index()
+        {
 
+            var apartmentInfo = _es.GetAll().Select(x => x.GetEventModel());
+
+            return View(apartmentInfo);
+        }
+
+        [Authorize(Roles = Constants.ROLE_EMPLOYEE)]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = Constants.ROLE_EMPLOYEE)]
+        [HttpPost]
+        public IActionResult Create(EventViewModel model)
+        {
+            _es.Post(model.GetEventDTO());
+            return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize(Roles = Constants.ROLE_EMPLOYEE)]
+        public IActionResult Update(int id)
+        {
+            var model = _es.GetById(id);
+            return View(model.GetEventModel());
+        }
+
+        [Authorize(Roles = Constants.ROLE_EMPLOYEE)]
+        [HttpPost]
+        public IActionResult Update(int id, EventViewModel model)
+        {
+            _es.Update(id, model.GetEventDTO());
+            return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize(Roles = Constants.ROLE_EMPLOYEE)]
+        public IActionResult Delete(int id)
+        {
+            _es.Delete(id);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

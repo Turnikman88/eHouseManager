@@ -9,7 +9,6 @@ namespace eHouseManager.Services.Contracts
     public interface IApartmentService : ICrud<ApartmentDTO>
     {
         int GetCount();
-
         IEnumerable<ApartmentDTO> GetAllByUserId(int id);
     }
 }

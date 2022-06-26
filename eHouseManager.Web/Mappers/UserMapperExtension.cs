@@ -20,7 +20,8 @@ namespace eHouseManager.Web.Mappers
                 Phone = model.Phone,
                 Role  = Constants.ROLE_USER,
                 FirstName = model.FirstName,
-                LastName = model.LastName
+                LastName = model.LastName,
+                UcnNumber = model.UcnNumber
             };
         }
 
@@ -44,7 +45,7 @@ namespace eHouseManager.Web.Mappers
                 Password = model.Password,
                 Phone = model.Phone,
                 FirstName = model.FirstName,
-                LastName = model.LastName
+                LastName = model.LastName,
             };
         }
     }
