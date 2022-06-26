@@ -21,5 +21,17 @@ namespace eHouseManager.Web.Mappers
                 Area = model.Area
             };
         }
+
+        public static UserApartmentViewModel GetAllApartmentModel(this ApartmentDTO model)
+        {
+            return new UserApartmentViewModel
+            {
+                Id = model.Id,
+                ApartmentNumber = model.ApartmentNumber,
+                Address = model.Address,
+                AreTaxesPaid = model.AreTaxesPaid,
+                Area = model.Area
+            };
+        }
     }
 }

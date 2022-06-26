@@ -5,6 +5,7 @@ using eHouseManager.Services.Contracts;
 using eHouseManager.Services.DTOMappers;
 using eHouseManager.Services.DTOs;
 using eHouseManager.Services.Helpers;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,14 @@ namespace eHouseManager.Services.Services
         public IEnumerable<EventDTO> GetAll()
         {
             return _db.Events.Select(x => x.ToDTO());
+        }
+
+        public IEnumerable<EventDTO> GetAllByUserId(int id)
+        {
+            var a = _db.UserEventAccesses.Where(x => x.UserId == id)
+               .Include(x => x.Event)
+               .Select(x => x.Event.ToDTO());
+            return a;
         }
 
         public EventDTO GetById(int id)

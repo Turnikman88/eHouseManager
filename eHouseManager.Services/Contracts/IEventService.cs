@@ -8,5 +8,6 @@ namespace eHouseManager.Services.Contracts
 {
     public interface IEventService : ICrud<EventDTO>
     {
+        IEnumerable<EventDTO> GetAllByUserId(int userId);
     }
 }

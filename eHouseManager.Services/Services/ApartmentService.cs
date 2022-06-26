@@ -33,7 +33,7 @@ namespace eHouseManager.Services.Services
 
         public IEnumerable<ApartmentDTO> GetAll()
         {
-            return _db.Apartments.Select(x => x.ToDTO());
+            return _db.Apartments.OrderBy(x => x.Area).ThenBy(x => x.AreTaxesPaid).Select(x => x.ToDTO());
         }
 
         public IEnumerable<ApartmentDTO> GetAllByUserId(int id)

@@ -66,6 +66,7 @@ namespace eHouseManager.Web.Controllers
             }
         }
 
+
         //GET: /auth/logout
         public IActionResult Logout()
         {
@@ -99,6 +100,7 @@ namespace eHouseManager.Web.Controllers
             return this.Redirect(nameof(Login));
         }
 
+
         [Authorize(Roles = Constants.ROLE_USER)]
         public ActionResult Settings()
         {
@@ -109,6 +111,7 @@ namespace eHouseManager.Web.Controllers
             return View(user.GetSettingsModel());
         }
 
+        [Authorize(Roles = Constants.ROLE_USER)]
         //POST: /auth/settings
         [HttpPost]
         public IActionResult Settings(SettingsViewModel model)
