@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eHouseManager.Data;
 
 namespace eHouseManager.Data.Migrations
 {
     [DbContext(typeof(eHouseManagerDbContext))]
-    partial class eHouseManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220628161827_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +48,7 @@ namespace eHouseManager.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ModifiedOn18118025")
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 23, 51, 348, DateTimeKind.Utc).AddTicks(5496));
+                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 18, 26, 496, DateTimeKind.Utc).AddTicks(459));
 
                     b.Property<string>("MyProperty")
                         .HasColumnType("nvarchar(max)");
@@ -343,7 +345,7 @@ namespace eHouseManager.Data.Migrations
                     b.Property<DateTime>("ModifiedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 23, 51, 355, DateTimeKind.Utc).AddTicks(1840));
+                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 18, 26, 502, DateTimeKind.Utc).AddTicks(7600));
 
                     b.Property<string>("OperationType")
                         .HasColumnType("nvarchar(max)");
@@ -374,7 +376,7 @@ namespace eHouseManager.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ModifiedOn18118025")
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 23, 51, 356, DateTimeKind.Utc).AddTicks(5735));
+                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 18, 26, 504, DateTimeKind.Utc).AddTicks(1005));
 
                     b.Property<int>("Month")
                         .HasColumnType("int");
@@ -436,7 +438,7 @@ namespace eHouseManager.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ModifiedOn18118025")
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 23, 51, 361, DateTimeKind.Utc).AddTicks(598));
+                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 18, 26, 508, DateTimeKind.Utc).AddTicks(5292));
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
@@ -467,7 +469,7 @@ namespace eHouseManager.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Password = "radostina99",
                             Role = "Admin",
-                            UcnNumber = 12
+                            UcnNumber = 11
                         },
                         new
                         {
@@ -479,7 +481,7 @@ namespace eHouseManager.Data.Migrations
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Password = "petrov99",
                             Role = "User",
-                            UcnNumber = 11
+                            UcnNumber = 22
                         });
                 });
 
@@ -497,7 +499,7 @@ namespace eHouseManager.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ModifiedOn18118025")
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 23, 51, 360, DateTimeKind.Utc).AddTicks(2715));
+                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 18, 26, 507, DateTimeKind.Utc).AddTicks(7650));
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -583,7 +585,7 @@ namespace eHouseManager.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ModifiedOn18118025")
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 23, 51, 361, DateTimeKind.Utc).AddTicks(5449));
+                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 18, 26, 509, DateTimeKind.Utc).AddTicks(61));
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");

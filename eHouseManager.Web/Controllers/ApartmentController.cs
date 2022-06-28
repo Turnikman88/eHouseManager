@@ -67,6 +67,7 @@ namespace eHouseManager.Web.Controllers
         [HttpPost]
         public IActionResult Create(UserApartmentViewModel model)
         {
+
             _as.Post(model.GetCreateApartmentDTO());
             return RedirectToAction(nameof(Index));
         }

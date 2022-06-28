@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eHouseManager.Data;
 
 namespace eHouseManager.Data.Migrations
 {
     [DbContext(typeof(eHouseManagerDbContext))]
-    partial class eHouseManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220627081407_seeder")]
+    partial class seeder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +48,7 @@ namespace eHouseManager.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ModifiedOn18118025")
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 23, 51, 348, DateTimeKind.Utc).AddTicks(5496));
+                        .HasDefaultValue(new DateTime(2022, 6, 27, 8, 14, 7, 33, DateTimeKind.Utc).AddTicks(7057));
 
                     b.Property<string>("MyProperty")
                         .HasColumnType("nvarchar(max)");
@@ -76,7 +78,7 @@ namespace eHouseManager.Data.Migrations
                             InhabitantsCount = 4,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Owner = "Петрови",
-                            UcnNumber = 11
+                            UcnNumber = 0
                         },
                         new
                         {
@@ -88,7 +90,7 @@ namespace eHouseManager.Data.Migrations
                             InhabitantsCount = 1,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Owner = "Иванова",
-                            UcnNumber = 11
+                            UcnNumber = 0
                         },
                         new
                         {
@@ -100,7 +102,7 @@ namespace eHouseManager.Data.Migrations
                             InhabitantsCount = 2,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Owner = "Колеви",
-                            UcnNumber = 11
+                            UcnNumber = 0
                         },
                         new
                         {
@@ -112,7 +114,7 @@ namespace eHouseManager.Data.Migrations
                             InhabitantsCount = 1,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Owner = "Динев",
-                            UcnNumber = 11
+                            UcnNumber = 0
                         },
                         new
                         {
@@ -124,7 +126,7 @@ namespace eHouseManager.Data.Migrations
                             InhabitantsCount = 3,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Owner = "Георгиеви",
-                            UcnNumber = 11
+                            UcnNumber = 0
                         },
                         new
                         {
@@ -136,7 +138,7 @@ namespace eHouseManager.Data.Migrations
                             InhabitantsCount = 4,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Owner = "Петров",
-                            UcnNumber = 11
+                            UcnNumber = 0
                         },
                         new
                         {
@@ -148,7 +150,7 @@ namespace eHouseManager.Data.Migrations
                             InhabitantsCount = 2,
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Owner = "Йорданови",
-                            UcnNumber = 22
+                            UcnNumber = 0
                         });
                 });
 
@@ -343,7 +345,7 @@ namespace eHouseManager.Data.Migrations
                     b.Property<DateTime>("ModifiedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 23, 51, 355, DateTimeKind.Utc).AddTicks(1840));
+                        .HasDefaultValue(new DateTime(2022, 6, 27, 8, 14, 7, 40, DateTimeKind.Utc).AddTicks(6668));
 
                     b.Property<string>("OperationType")
                         .HasColumnType("nvarchar(max)");
@@ -374,7 +376,7 @@ namespace eHouseManager.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ModifiedOn18118025")
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 23, 51, 356, DateTimeKind.Utc).AddTicks(5735));
+                        .HasDefaultValue(new DateTime(2022, 6, 27, 8, 14, 7, 42, DateTimeKind.Utc).AddTicks(1019));
 
                     b.Property<int>("Month")
                         .HasColumnType("int");
@@ -401,7 +403,7 @@ namespace eHouseManager.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 3,
+                            Id = 1,
                             Amount = 50.00m,
                             ApartmentId = 1,
                             DueAmount = 0.00m,
@@ -436,7 +438,7 @@ namespace eHouseManager.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ModifiedOn18118025")
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 23, 51, 361, DateTimeKind.Utc).AddTicks(598));
+                        .HasDefaultValue(new DateTime(2022, 6, 27, 8, 14, 7, 46, DateTimeKind.Utc).AddTicks(6058));
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
@@ -462,24 +464,24 @@ namespace eHouseManager.Data.Migrations
                             Id = 1,
                             Email = "radostina_991@abv.bg",
                             FirstName = "Радостина",
-                            IsActive = true,
+                            IsActive = false,
                             LastName = "Накева",
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Password = "radostina99",
                             Role = "Admin",
-                            UcnNumber = 12
+                            UcnNumber = 0
                         },
                         new
                         {
                             Id = 2,
                             Email = "petrov@abv.bg",
                             FirstName = "Иван",
-                            IsActive = true,
+                            IsActive = false,
                             LastName = "Петров",
                             ModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Password = "petrov99",
                             Role = "User",
-                            UcnNumber = 11
+                            UcnNumber = 0
                         });
                 });
 
@@ -497,7 +499,7 @@ namespace eHouseManager.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ModifiedOn18118025")
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 23, 51, 360, DateTimeKind.Utc).AddTicks(2715));
+                        .HasDefaultValue(new DateTime(2022, 6, 27, 8, 14, 7, 45, DateTimeKind.Utc).AddTicks(8248));
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -583,7 +585,7 @@ namespace eHouseManager.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ModifiedOn18118025")
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 6, 28, 16, 23, 51, 361, DateTimeKind.Utc).AddTicks(5449));
+                        .HasDefaultValue(new DateTime(2022, 6, 27, 8, 14, 7, 47, DateTimeKind.Utc).AddTicks(993));
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");

@@ -60,6 +60,7 @@ namespace eHouseManager.Services.Services
             PropertyCopier<UserDTO, User>.Copy(obj, modelToUpdate);
 
             modelToUpdate.ModifiedOn = DateTime.UtcNow;
+            modelToUpdate.IsActive = true;
 
             _db.SaveChanges();
 

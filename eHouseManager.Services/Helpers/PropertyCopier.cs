@@ -27,11 +27,11 @@ namespace eHouseManager.Services.Helpers
                             }
                         }
 
-                        if (parentProperty.PropertyType == typeof(bool))
+/*                        if (parentProperty.PropertyType == typeof(bool) && )
                         {
                             break;
                         }
-
+*/
 
                         if (parentProperty.PropertyType == typeof(int) && (int)parentProperty.GetValue(parent) == 0)
                         {
